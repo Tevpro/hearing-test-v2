@@ -1,4 +1,5 @@
-import React from "https://esm.sh/preact@10.11.3/compat";
+import * as React from "https://esm.sh/preact@10.11.3";
+import * as Hooks from "https://esm.sh/preact@10.11.3/hooks";
 
 const size = 1/6;
 /** @type {Array<Store.ColumnMapping>} */
@@ -405,9 +406,9 @@ export const Context = React.createContext(/** @type {Store.Binding} */([Initial
 export const Provider =(props)=>
 {
     /** @type {Store.Binding} */
-    const reducer = React.useReducer(Reducer, Initial);
-    return React.createElement(Context.Provider, {value:reducer, children:props.children});
+    const reducer = Hooks.useReducer(Reducer, Initial);
+    return React.h(Context.Provider, {value:reducer, children:props.children});
 };
 
 /** @type {()=>Store.Binding} */
-export const Consumer =()=> React.useContext(Context);
+export const Consumer =()=> Hooks.useContext(Context);
