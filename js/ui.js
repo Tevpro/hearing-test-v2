@@ -1,7 +1,8 @@
-import React from "https://esm.sh/preact@10.11.3/compat";
+import * as React from "https://esm.sh/preact@10.11.3";
+import * as Hooks from "https://esm.sh/preact@10.11.3/hooks";
 import htm from "https://esm.sh/htm@3.1.1";
 
-const html = htm.bind(React.createElement);
+const html = htm.bind(React.h);
 
 import * as Store from "./store.js";
 import * as Tone from "./tone.js";
@@ -11,7 +12,7 @@ import * as Tone from "./tone.js";
 /** @type {({children, icon, light, disabled, inactive, onClick, classes, classesActive}:{children:preact.VNode, icon?:preact.VNode, light:boolean, disabled:boolean, inactive:boolean, onClick:()=>void, classes?:string, classesActive?:string})=>preact.VNode} */
 export function Button({children, icon, light, disabled, inactive, onClick, classes, classesActive})
 {
-    const [FlashGet, FlashSet] = React.useState(0);
+    const [FlashGet, FlashSet] = Hooks.useState(0);
     const handleClick =()=>
     {
         if(inactive||disabled){ return; }
@@ -131,12 +132,12 @@ export const Controls =()=>
 {
     const [State, Dispatch] = Store.Consumer();
 
-    const [pulsedGet, pulsedSet] = React.useState(true);
-    const [playGet, playSet] = React.useState(0);
+    const [pulsedGet, pulsedSet] = Hooks.useState(true);
+    const [playGet, playSet] = Hooks.useState(0);
 
-    const errorsRef = React.useRef(0);
+    const errorsRef = Hooks.useRef(0);
 
-    React.useEffect(()=>
+    Hooks.useEffect(()=>
     {
         /** @type {number|undefined} */
         let timer;
@@ -167,7 +168,7 @@ export const Controls =()=>
         
     }, [playGet]);
 
-    React.useEffect(()=>
+    Hooks.useEffect(()=>
     {
         //console.log("resetting errors");
         errorsRef.current = 0;

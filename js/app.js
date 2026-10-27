@@ -1,7 +1,7 @@
-import React from "https://esm.sh/preact@10.11.3/compat";
+import * as React from "https://esm.sh/preact@10.11.3";
 import htm from "https://esm.sh/htm@3.1.1";
 
-const html = htm.bind(React.createElement);
+const html = htm.bind(React.h);
 
 import * as TW from "./twind.js";
 import * as UI from "./ui.js";
