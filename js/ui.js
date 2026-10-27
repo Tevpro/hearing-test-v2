@@ -1,5 +1,8 @@
 import React from "https://esm.sh/preact@10.11.3/compat";
-import { html } from "https://esm.sh/htm@3.1.1/preact";
+import htm from "https://esm.sh/htm@3.1.1";
+
+const html = htm.bind(React.createElement);
+
 import * as Store from "./store.js";
 import * as Tone from "./tone.js";
 
